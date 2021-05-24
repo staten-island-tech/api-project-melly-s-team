@@ -3,3 +3,6 @@ const DOMSelectors = {
 };
 
 export { DOMSelectors };
+
+
+//use dom selectors to change the value of the word you are searching
