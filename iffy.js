@@ -1,13 +1,14 @@
-import { DOMSelectors } from "DOM.js";
+import { DOMSelectors } from "./DOM.js";
 
 const key = "dc3cdce9-25bd-4b2f-93da-ff18fe638dfd";
 
 const listen = function () {
   DOMSelectors.searchForm.addEventListener("submit", function (e) {
     e.preventDefault();
-    DOMSelectors.grid.innerHTML = "";
+
     const searchParams = DOMSelectors.searchArea.value;
 
+    const metaword = meta.id;
     const searchQuery = async function () {
       try {
         const response = await fetch(
@@ -15,13 +16,13 @@ const listen = function () {
         );
         const data = await response.json();
 
-        DOMSelectors.grid.insertAdjacentHTML(
+        DOMSelectors.insertAdjacentHTML(
           "beforeend",
           `<form id="search-form" class="search-form">
             <textarea name="search-area" id="search-area" placeholder="search for a word"></textarea>
             <input type="submit" class="submit-button" />
           </form>
-          <p>word:${meta.id} definition:${shortdef}
+          <p>word:${metaword} definition:${shortdef}
           </p>`
         );
       } catch (error) {
