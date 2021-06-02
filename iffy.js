@@ -8,7 +8,8 @@ const listen = function () {
 
     const searchParams = DOMSelectors.searchArea.value;
 
-    const metaword = meta.id;
+    const metaWord = data[0].meta.id;
+    const shortDefi = data[8].shortdef;
     const searchQuery = async function () {
       try {
         const response = await fetch(
@@ -22,7 +23,7 @@ const listen = function () {
             <textarea name="search-area" id="search-area" placeholder="search for a word"></textarea>
             <input type="submit" class="submit-button" />
           </form>
-          <p>word:${metaword} definition:${shortdef}
+          <p>word:${metaWord} definition:${shortDefi}
           </p>`
         );
       } catch (error) {
