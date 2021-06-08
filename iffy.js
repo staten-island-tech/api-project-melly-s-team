@@ -8,8 +8,6 @@ const listen = function () {
 
     const searchParams = DOMSelectors.searchArea.value;
 
-    const metaWord = data[0].meta.id;
-    const shortDefi = data[8].shortdef;
     const searchQuery = async function () {
       try {
         const response = await fetch(
@@ -17,13 +15,16 @@ const listen = function () {
         );
         const data = await response.json();
 
+        const metaWord = data[0].meta.id;
+        const shortDefi = data[data.length - 1].shortdef;
+
         DOMSelectors.insertAdjacentHTML(
           "beforeend",
-          `<form id="search-form" class="search-form">
-            <textarea name="search-area" id="search-area" placeholder="search for a word"></textarea>
-            <input type="submit" class="submit-button" />
+          `<form id="searchForm" class="searchForm">
+              <textarea name="searchArea" id="searchArea" placeholder="search for a word"></textarea>
+              <input type="submit" class="submit-button" />
           </form>
-          <p>word:${metaWord} definition:${shortDefi}
+          <p id="paraChange">word: ${metaWord} definition: ${shortDefi}
           </p>`
         );
       } catch (error) {

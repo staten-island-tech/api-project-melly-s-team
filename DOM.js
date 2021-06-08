@@ -1,6 +1,7 @@
 const DOMSelectors = {
-  searchForm: document.getElementById("search-form"),
-  searchArea: document.getElementById("search-area"),
+  searchForm: document.getElementById("searchForm"),
+  searchArea: document.getElementById("searchArea"),
+  searchArea: document.getElementById("paraChange"),
 };
 
 export { DOMSelectors };
