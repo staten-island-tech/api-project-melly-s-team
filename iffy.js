@@ -8,22 +8,19 @@ const listen = function () {
 
     const searchParams = DOMSelectors.searchArea.value;
 
-    const searchQuery = async function () {
+    const searchQuery = async function (searchParams) {
       try {
         const response = await fetch(
           `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${searchParams}?key=${key}`
         );
         const data = await response.json();
-
+        console.log(data);
         const metaWord = data[0].meta.id;
         const shortDefi = data[data.length - 1].shortdef;
 
-        DOMSelectors.insertAdjacentHTML(
+        DOMSelectors.test.insertAdjacentHTML(
           "beforeend",
-          `<form id="searchForm" class="searchForm">
-              <textarea name="searchArea" id="searchArea" placeholder="search for a word"></textarea>
-              <input type="submit" class="submit-button" />
-          </form>
+          `
           <p id="paraChange">word: ${metaWord} definition: ${shortDefi}
           </p>`
         );
@@ -32,7 +29,7 @@ const listen = function () {
         alert("Hey something went wrong");
       }
     };
-    searchQuery();
+    searchQuery(searchParams);
   });
 };
 
